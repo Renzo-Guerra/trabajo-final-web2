@@ -11,6 +11,14 @@
     function displayAllProperties($properties){
       $this->smarty->assign('properties', $properties);
 
-      $this->smarty->display('home.tpl');
+      $this->smarty->display('pages/home.tpl');
+    }
+    
+    function showAddProperty(){
+      $this->smarty->display('pages/addProperty.tpl');
+    }
+    
+    function showAddOwner(){
+      $this->smarty->display('pages/addOwner.tpl');
     }
   }

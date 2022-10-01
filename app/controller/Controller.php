@@ -11,7 +11,7 @@
       $this->view = new View();
     }
 
-    function showHome(){
+    function showHomePage(){
       $properties = $this->model->getAllProperties();
       $this->view->displayAllProperties($properties);
     }
@@ -70,6 +70,13 @@
       header("Location: " . BASE_URL);
     }
 
+    function showAddPropertyPage(){
+      $this->view->showAddProperty();
+    }
+
+    function showAddOwnerPage(){
+      $this->view->showAddOwner();
+    }
     // Future functions to implement:
     // function displaySellingProperties()
     // function displayRentingProperties()

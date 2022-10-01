@@ -30,6 +30,13 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Alquiler</a>
         </li>
+        {* This last <li></li> will only be seen by the admin *}
+        <li class="nav-item">
+          <ul class="navbar-nav">
+            <li><a class="nav-link" href="addProperty">Agregar propiedad</a></li>
+            <li><a class="nav-link" href="addOwner">Agregar propietario</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>

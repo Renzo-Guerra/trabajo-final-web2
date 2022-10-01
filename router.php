@@ -14,9 +14,11 @@
   $controller = new Controller();
 
   switch ($params[0]) {
-    case 'home': $controller->showHome(); break;
-    case 'addNewUser': $controller->addNewUser(); break;
-    case 'addNewProperty': $controller->addNewProperty(); break;
+    case 'home': $controller->showHomePage(); break;
+    case 'addOwner': $controller->showAddOwnerPage(); break;
+    case 'createNewUser': $controller->addNewUser(); break;
+    case 'addProperty': $controller->showAddPropertyPage(); break;
+    case 'createNewProperty': $controller->addNewProperty(); break;
 
     default: echo "404 not found"; break;
   }
