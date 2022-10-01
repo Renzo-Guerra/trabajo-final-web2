@@ -37,4 +37,16 @@
       $query = $this->db->prepare("INSERT INTO `tb_propietario` (`dni`, `nombre`, `apellido`, `telefono`, `mail`) VALUES (?, ?, ?, ?, ?)");
       $query->execute([$dni, $name, $surname, $phone, $mail]);
     }
+
+    /**
+     * Adds a new property to the table (only if the owner dni already exists in the table 'tb_propietario')
+     */
+    function addNewPropertyToDB($title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $owner_dni){
+      // Confirm the existance of a user with that dni
+      $exist = $this->existUser($owner_dni);
+      if(!$exist){ return;}
+
+      $query = $this->db->prepare("INSERT INTO `tb_propiedad`(`titulo`, `tipo`, `operacion`, `descripcion`, `precio`, `metros_cuadrados`, `ambientes`, `banios`, `permite_mascotas`, `propietario`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+      $query->execute([$title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $owner_dni]);
+    }
   }

@@ -1,4 +1,4 @@
-<form action="#" class="container-sm">
+<form action="addNewProperty" class="container-sm">
   <div class="container-sm p-4 bg-success d-grid gap-4">
     <h3 class="my-3 text-center">Upload new property</h3>
     <div class="d-flex justify-content-between">
@@ -7,7 +7,7 @@
     </div>
     <div class="d-flex justify-content-between">
       <label for="type_property">Tipo de propiedad: </label>
-      <select name="type_property" id="type_property">
+      <select name="tipo" id="type_property">
         <option value="casa" name="tipo">Casa</option>
         <option value="departamento" name="tipo">Departamento</option>
         <option value="ph" name="tipo">PH</option>
@@ -17,7 +17,7 @@
     </div>
     <div class="d-flex justify-content-between">
       <label for="operation">Operación: </label>
-      <select name="operation" id="operation">
+      <select name="operacion" id="operation">
         <option value="alquiler" name="operacion">Alquiler</option>
         <option value="venta" name="operacion">Venta</option>
       </select>
