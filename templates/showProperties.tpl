@@ -1,5 +1,3 @@
-{include file="header.tpl"}
-
 {foreach from=$properties item=$property}
   <h4>{$property->titulo}</h4>
   <ol>
@@ -17,5 +15,3 @@
 {foreachelse}
   <p>Empty database</p>
 {/foreach}
-
-{include file="footer.tpl"}
