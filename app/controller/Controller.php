@@ -83,13 +83,11 @@
       $this->view->displayAllOwners($owners);
     }
     
-    function showSellingProperties(){
-      $selling_properties = $this->model->getAllSellingProperties();
-      $this->view->displayProperties($selling_properties);
-    }
-    
-    function showRentingProperties(){
-      $renting_properties = $this->model->getAllRentingProperties();
-      $this->view->displayProperties($renting_properties);
+    /**
+     * Given a operation, the page will show properties that fulfill the 'operation' ('alquiler'/'venta')
+     */
+    function showPropertiesOperation($operation){
+      $properties = $this->model->getAllPropertiesWhereOperacionEquals($operation);
+      $this->view->displayProperties($properties);
     }
   }

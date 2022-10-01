@@ -61,19 +61,11 @@
       return $owners;
     }
 
-    function getAllSellingProperties(){
-      $query = $this->db->prepare("SELECT * FROM tb_propiedad WHERE `operacion` = 'venta'");
-      $query->execute();
-      $selling_properties = $query->fetchAll(PDO::FETCH_OBJ);
+    function getAllPropertiesWhereOperacionEquals($operation){
+      $query = $this->db->prepare("SELECT * FROM tb_propiedad WHERE `operacion` = ?");
+      $query->execute([$operation]);
+      $properties = $query->fetchAll(PDO::FETCH_OBJ);
 
-      return $selling_properties;
-    }
-
-    function getAllRentingProperties(){
-      $query = $this->db->prepare("SELECT * FROM tb_propiedad WHERE `operacion` = 'alquiler'");
-      $query->execute();
-      $selling_properties = $query->fetchAll(PDO::FETCH_OBJ);
-
-      return $selling_properties;
+      return $properties;
     }
   }
