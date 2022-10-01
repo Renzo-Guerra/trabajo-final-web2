@@ -21,9 +21,9 @@
      */
     function addNewUser(){
       // Validations
-      if(!isset($_GET['dni']) || !isset($_GET['name']) || !isset($_GET['surname']) || !isset($_GET['phone']) || !isset($_GET['mail'])){ return;}
-      if(is_null($_GET['dni']) || is_null($_GET['name']) || is_null($_GET['surname']) || is_null($_GET['phone']) || is_null($_GET['mail'])){ return;}
-      if(empty($_GET['dni']) || empty($_GET['name']) || empty($_GET['surname']) || empty($_GET['phone']) || empty($_GET['mail'])){ return;}
+      if(!isset($_GET['dni']) || !isset($_GET['name']) || !isset($_GET['surname']) || !isset($_GET['phone']) || !isset($_GET['mail'])){ header("Location: " . BASE_URL);}
+      if(is_null($_GET['dni']) || is_null($_GET['name']) || is_null($_GET['surname']) || is_null($_GET['phone']) || is_null($_GET['mail'])){ header("Location: " . BASE_URL);}
+      if(empty($_GET['dni']) || empty($_GET['name']) || empty($_GET['surname']) || empty($_GET['phone']) || empty($_GET['mail'])){ header("Location: " . BASE_URL);}
       
       $name = $_GET['name'];
       $surname = $_GET['surname'];
@@ -43,9 +43,9 @@
      */
     function addNewProperty(){
       // Validations
-      if(!isset($_GET['titulo']) || !isset($_GET['tipo']) || !isset($_GET['operacion']) || !isset($_GET['descripcion']) || !isset($_GET['precio']) || !isset($_GET['metros_cuadrados']) || !isset($_GET['ambientes']) || !isset($_GET['banios']) || !isset($_GET['permite_mascotas']) || !isset($_GET['propietario'])){ header("Location: " . BASE_URL);;}
-      if(is_null($_GET['titulo']) || is_null($_GET['tipo']) || is_null($_GET['operacion']) || is_null($_GET['descripcion']) || is_null($_GET['precio']) || is_null($_GET['metros_cuadrados']) || is_null($_GET['ambientes']) || is_null($_GET['banios']) || is_null($_GET['permite_mascotas']) || is_null($_GET['propietario'])){ header("Location: " . BASE_URL);;}
-      if(empty($_GET['titulo']) || empty($_GET['tipo']) || empty($_GET['operacion']) || empty($_GET['descripcion']) || empty($_GET['precio']) || empty($_GET['metros_cuadrados']) || empty($_GET['ambientes']) || empty($_GET['banios']) || empty($_GET['permite_mascotas']) || empty($_GET['propietario'])){ header("Location: " . BASE_URL);;}
+      if(!isset($_GET['titulo']) || !isset($_GET['tipo']) || !isset($_GET['operacion']) || !isset($_GET['descripcion']) || !isset($_GET['precio']) || !isset($_GET['metros_cuadrados']) || !isset($_GET['ambientes']) || !isset($_GET['banios']) || !isset($_GET['permite_mascotas']) || !isset($_GET['propietario'])){ header("Location: " . BASE_URL);}
+      if(is_null($_GET['titulo']) || is_null($_GET['tipo']) || is_null($_GET['operacion']) || is_null($_GET['descripcion']) || is_null($_GET['precio']) || is_null($_GET['metros_cuadrados']) || is_null($_GET['ambientes']) || is_null($_GET['banios']) || is_null($_GET['permite_mascotas']) || is_null($_GET['propietario'])){ header("Location: " . BASE_URL);}
+      if(empty($_GET['titulo']) || empty($_GET['tipo']) || empty($_GET['operacion']) || empty($_GET['descripcion']) || empty($_GET['precio']) || empty($_GET['metros_cuadrados']) || empty($_GET['ambientes']) || empty($_GET['banios']) || empty($_GET['permite_mascotas']) || empty($_GET['propietario'])){ header("Location: " . BASE_URL);}
 
       $title = $_GET['titulo'];
       $type = $_GET['tipo'];
