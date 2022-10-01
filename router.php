@@ -21,6 +21,7 @@
     case 'createNewProperty': $controller->addNewProperty(); break;
     case 'owners': $controller->showOwnersPage(); break;
     case 'selling': $controller->showSellingProperties(); break;
+    case 'renting': $controller->showRentingProperties(); break;
 
     default: echo "404 not found"; break;
   }

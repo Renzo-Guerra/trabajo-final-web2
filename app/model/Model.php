@@ -68,4 +68,12 @@
 
       return $selling_properties;
     }
+
+    function getAllRentingProperties(){
+      $query = $this->db->prepare("SELECT * FROM tb_propiedad WHERE `operacion` = 'alquiler'");
+      $query->execute();
+      $selling_properties = $query->fetchAll(PDO::FETCH_OBJ);
+
+      return $selling_properties;
+    }
   }

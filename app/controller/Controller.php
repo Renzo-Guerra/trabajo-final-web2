@@ -88,6 +88,8 @@
       $this->view->displayProperties($selling_properties);
     }
     
-    // Future functions to implement:
-    // function displayRentingProperties()
+    function showRentingProperties(){
+      $renting_properties = $this->model->getAllRentingProperties();
+      $this->view->displayProperties($renting_properties);
+    }
   }

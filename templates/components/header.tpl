@@ -28,7 +28,7 @@
           <a class="nav-link" href="selling">Venta</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Alquiler</a>
+          <a class="nav-link" href="renting">Alquiler</a>
         </li>
         {* This last <li></li> will only be seen by the admin *}
         <li class="nav-item mx-5">
