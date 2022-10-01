@@ -14,6 +14,6 @@
   $controller = new Controller();
 
   switch ($params[0]) {
-    case 'home': $controller->displayAllProperties(); break;
+    case 'home': $controller->showHome(); break;
     default: echo "404 not found"; break;
   }

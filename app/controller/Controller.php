@@ -11,7 +11,7 @@
       $this->view = new View();
     }
 
-    function displayAllProperties(){
+    function showHome(){
       $properties = $this->model->getAllProperties();
       $this->view->displayAllProperties($properties);
     }
