@@ -1,12 +1,12 @@
 <form action="addNewUser" class="container-sm">
   <div class="container-sm p-4 bg-success d-grid gap-4">
-    <h3 class="my-3 text-center">Create new user</h3>
+    <h3 class="my-3 text-center">Crear nuevo usuario</h3>
     <div class="d-flex justify-content-between">
-      <label for="owner_name">Name: </label>
+      <label for="owner_name">Nombre: </label>
       <input type="text" id="owner_name" name="name" required>
     </div>
     <div class="d-flex justify-content-between">
-      <label for="owner_surname">Surname: </label>
+      <label for="owner_surname">Apellido: </label>
       <input type="text" id="owner_surname" name="surname" required>
     </div>
     <div class="d-flex justify-content-between">
@@ -14,7 +14,7 @@
       <input type="number" id="owner_dni" name="dni" required>
     </div>
     <div class="d-flex justify-content-between">
-      <label for="owner_phone">Phone: </label>
+      <label for="owner_phone">Celular: </label>
       <input type="number" id="owner_phone" name="phone" required>
     </div>
     <div class="d-flex justify-content-between">

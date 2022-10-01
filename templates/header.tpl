@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <base href="{BASE_URL}">
   <meta charset="UTF-8">
@@ -22,13 +22,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="home">Home</a>
+          <a class="nav-link" aria-current="page" href="home">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Selling</a>
+          <a class="nav-link" href="#">Venta</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Renting</a>
+          <a class="nav-link" href="#">Alquiler</a>
         </li>
       </ul>
     </div>
