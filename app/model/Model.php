@@ -49,4 +49,15 @@
       $query = $this->db->prepare("INSERT INTO `tb_propiedad`(`titulo`, `tipo`, `operacion`, `descripcion`, `precio`, `metros_cuadrados`, `ambientes`, `banios`, `permite_mascotas`, `propietario`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
       $query->execute([$title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $owner_dni]);
     }
+
+    /**
+     * Obtains all the owners from 'tb_propietarios'
+     */
+    function getAllOwners(){
+      $query = $this->db->prepare("SELECT * FROM tb_propietario");
+      $query->execute();
+      $owners = $query->fetchAll(PDO::FETCH_OBJ);
+
+      return $owners;
+    }
   }

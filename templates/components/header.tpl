@@ -31,10 +31,11 @@
           <a class="nav-link" href="#">Alquiler</a>
         </li>
         {* This last <li></li> will only be seen by the admin *}
-        <li class="nav-item">
+        <li class="nav-item mx-5">
           <ul class="navbar-nav">
             <li><a class="nav-link" href="addProperty">Agregar propiedad</a></li>
             <li><a class="nav-link" href="addOwner">Agregar propietario</a></li>
+            <li><a class="nav-link" href="owners">Ver propietarios</a></li>
           </ul>
         </li>
       </ul>

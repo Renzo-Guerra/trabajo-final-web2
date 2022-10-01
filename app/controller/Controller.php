@@ -77,6 +77,11 @@
     function showAddOwnerPage(){
       $this->view->showAddOwner();
     }
+
+    function showOwnersPage(){
+      $owners = $this->model->getAllOwners();
+      $this->view->displayAllOwners($owners);
+    }
     // Future functions to implement:
     // function displaySellingProperties()
     // function displayRentingProperties()

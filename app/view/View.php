@@ -21,4 +21,8 @@
     function showAddOwner(){
       $this->smarty->display('pages/addOwner.tpl');
     }
+    function displayAllOwners($owners){
+      $this->smarty->assign('owners', $owners);
+      $this->smarty->display('pages/owners.tpl');
+    }
   }
