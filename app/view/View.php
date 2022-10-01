@@ -8,9 +8,8 @@
       $this->smarty = new Smarty();
     }
 
-    function displayAllProperties($properties){
+    function displayProperties($properties){
       $this->smarty->assign('properties', $properties);
-
       $this->smarty->display('pages/home.tpl');
     }
     
@@ -21,6 +20,8 @@
     function showAddOwner(){
       $this->smarty->display('pages/addOwner.tpl');
     }
+
+    // Can't reuse because has different attributes from property
     function displayAllOwners($owners){
       $this->smarty->assign('owners', $owners);
       $this->smarty->display('pages/owners.tpl');

@@ -13,7 +13,7 @@
 
     function showHomePage(){
       $properties = $this->model->getAllProperties();
-      $this->view->displayAllProperties($properties);
+      $this->view->displayProperties($properties);
     }
 
     /**
@@ -73,7 +73,7 @@
     function showAddPropertyPage(){
       $this->view->showAddProperty();
     }
-
+    
     function showAddOwnerPage(){
       $this->view->showAddOwner();
     }
@@ -82,7 +82,12 @@
       $owners = $this->model->getAllOwners();
       $this->view->displayAllOwners($owners);
     }
+    
+    function showSellingProperties(){
+      $selling_properties = $this->model->getAllSellingProperties();
+      $this->view->displayProperties($selling_properties);
+    }
+    
     // Future functions to implement:
-    // function displaySellingProperties()
     // function displayRentingProperties()
   }

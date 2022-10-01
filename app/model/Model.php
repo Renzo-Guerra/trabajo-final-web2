@@ -60,4 +60,12 @@
 
       return $owners;
     }
+
+    function getAllSellingProperties(){
+      $query = $this->db->prepare("SELECT * FROM tb_propiedad WHERE `operacion` = 'venta'");
+      $query->execute();
+      $selling_properties = $query->fetchAll(PDO::FETCH_OBJ);
+
+      return $selling_properties;
+    }
   }

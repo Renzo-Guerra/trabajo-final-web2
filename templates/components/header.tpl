@@ -25,7 +25,7 @@
           <a class="nav-link" aria-current="page" href="home">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Venta</a>
+          <a class="nav-link" href="selling">Venta</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Alquiler</a>
