@@ -15,5 +15,7 @@
 
   switch ($params[0]) {
     case 'home': $controller->showHome(); break;
+    case 'addNewUser': $controller->addNewUser(); break;
+    
     default: echo "404 not found"; break;
   }
