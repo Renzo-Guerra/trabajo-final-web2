@@ -12,7 +12,7 @@
 <header>
   <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="home">
+    <a class="navbar-brand" href="inicio">
       {* Logo not working... *}
       <img src="../assets/img/logo2.png" width="30" height="24" class="d-inline-block align-text-top">Lattour
     </a>
@@ -22,20 +22,20 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="home">Inicio</a>
+          <a class="nav-link" aria-current="page" href="inicio">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="selling">Venta</a>
+          <a class="nav-link" href="venta">Venta</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="renting">Alquiler</a>
+          <a class="nav-link" href="alquiler">Alquiler</a>
         </li>
         {* This last <li></li> will only be seen by the admin *}
         <li class="nav-item mx-5">
           <ul class="navbar-nav">
-            <li><a class="nav-link" href="addProperty">Agregar propiedad</a></li>
-            <li><a class="nav-link" href="addOwner">Agregar propietario</a></li>
-            <li><a class="nav-link" href="owners">Ver propietarios</a></li>
+            <li><a class="nav-link" href="agregarPropiedad">Agregar propiedad</a></li>
+            <li><a class="nav-link" href="agregarPropietario">Agregar propietario</a></li>
+            <li><a class="nav-link" href="propietarios">Ver propietarios</a></li>
           </ul>
         </li>
       </ul>

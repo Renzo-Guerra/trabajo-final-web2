@@ -1,6 +1,6 @@
 <form action="addNewProperty" class="container-sm">
   <div class="container-sm p-4 bg-success d-grid gap-4">
-    <h3 class="my-3 text-center">Upload new property</h3>
+    <h3 class="my-3 text-center">Nueva propiedad</h3>
     <div class="d-flex justify-content-between">
       <label for="title">Titulo: </label>
       <input type="text" id="title" name="titulo">
@@ -57,6 +57,6 @@
       <label for="dni_owner">Dni propietario: </label>
       <input type="number" id="dni_owner" name="propietario">
     </div>
-    <button class="btn btn-primary">Registrar propiedad</button>
+    <button class="btn btn-primary">Agregar propiedad</button>
   </div>
 </form>
