@@ -13,7 +13,8 @@
       $this->smarty->display('pages/home.tpl');
     }
     
-    function showAddProperty(){
+    function showAddProperty($users){
+      $this->smarty->assign('users', $users);
       $this->smarty->display('pages/addProperty.tpl');
     }
     

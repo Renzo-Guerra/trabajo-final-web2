@@ -63,7 +63,8 @@
     }
 
     function showAddPropertyPage(){
-      $this->view->showAddProperty();
+      $owners = $this->model->getAllOwners();
+      $this->view->showAddProperty($owners);
     }
     
     function showAddOwnerPage(){
@@ -71,8 +72,8 @@
     }
 
     function showOwnersPage(){
-      $owners = $this->model->getAllOwners();
-      $this->view->displayAllOwners($owners);
+      $users = $this->model->getAllOwners();
+      $this->view->displayAllOwners($users);
     }
     
     /**
