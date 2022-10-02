@@ -1,4 +1,4 @@
-<div class="properties-container">
+<div class="props-container">
   {foreach from=$properties item=$property}
     <div class="property-container">
       <div class="property-container__left"> {* left part *}
@@ -16,7 +16,6 @@
           <div><p>Mts²: {$property->metros_cuadrados}</p></div>
           <div><p>Ambientes: {$property->ambientes}</p></div>
           <div><p>Baños: {$property->banios}</p></div>
-          <div><p>Mts²: {$property->metros_cuadrados}</p></div>
           {if $property->permite_mascotas}
             <div><p>Permite mascotas</p></div>
           {/if}
