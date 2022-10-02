@@ -1,4 +1,4 @@
-<form action="addNewProperty" class="container-sm">
+<form action="crearNuevaPropiedad" class="container-sm">
   <div class="container-sm p-4 bg-success d-grid gap-4">
     <h3 class="my-3 text-center">Nueva propiedad</h3>
     <div class="d-flex justify-content-between">
