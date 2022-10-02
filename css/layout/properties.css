@@ -37,3 +37,46 @@
   flex-wrap: wrap;
   gap: .4rem 1.6rem;
 }
+
+@media screen and (min-width: 700px){
+   /* Main articles container */ 
+    .props-container{
+      width: 88vw; margin-inline: auto; 
+    }
+    
+    /* Article container */ 
+    .property-container{
+      display: flex; 
+    }
+    
+    /* Left/top side of the article */ 
+    .property-container__left{
+      flex-direction: column; padding: 1rem; 
+    } 
+    
+    .props-container img{
+      border-radius: 1vh; 
+    } 
+    
+    .property-container__left h4{
+      padding-left: 0; 
+    } 
+    
+    .property-container__right{
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    } 
+    
+    .property-container__important{
+      flex-grow: 1;
+      position: relative;
+    }
+
+    .property-container__characteristics{ 
+      display: flex;
+      flex-wrap: wrap;
+      bottom: 0;
+      height: min-content;
+    } 
+  }
