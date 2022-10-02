@@ -68,4 +68,9 @@
 
       return $properties;
     }
+    
+    function deleteProperty($id_property){
+      $query = $this->db->prepare("DELETE FROM tb_propiedad WHERE `id` = ?");
+      $query->execute([$id_property]);
+    }
   }

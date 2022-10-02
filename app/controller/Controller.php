@@ -90,4 +90,9 @@
       $properties = $this->model->getAllPropertiesWhereOperacionEquals($operation);
       $this->view->displayProperties($properties);
     }
+    /* Delete a property, then display the homePage */
+    function deleteProperty($id_property){
+      $this->model->deleteProperty($id_property);
+      $this->showHomePage();
+    }
   }
