@@ -55,8 +55,13 @@
       </div>
     </div>
     <div class="d-flex justify-content-between">
-      <label for="dni_owner">Dni propietario: </label>
-      <input type="number" id="dni_owner" name="propietario" value="{$property->propietario}">
+      <label for="owner">Propietario: </label>
+      <select name="propietario" id="owner">
+        {foreach from=$users item=$user}
+          {* Displays every user, and 'checks' the owner of the property by defaut *}
+          <option value="{$user->dni}" name="propietario" {if $user->dni == $property->propietario}selected{/if}>{$user->nombre} {$user->apellido}</option>
+        {/foreach}
+      </select>
     </div>
     <div class="d-flex gap-4 justify-content-end">
       <button type="submit" class="btn btn-primary">Confirmar</button>

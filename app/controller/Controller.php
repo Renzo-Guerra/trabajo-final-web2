@@ -87,11 +87,15 @@
       $this->model->deleteProperty($id_property);
       $this->showHomePage();
     }
+    
     function showEditProperty($id_property){
       $property_data = $this->model->getPropertyById($id_property);
       // If the data is "false"...
       if(empty($property_data)){$this->showHomePage();}
-      $this->view->editProperty($property_data);
+      
+      // Get users to show dnis from a select -> option (HTML)
+      $users = $this->model->getAllOwners();
+      $this->view->editProperty($property_data, $users);
     }
 
     // Validates the isset, is_null and empty. Plus select/options and radio values.
