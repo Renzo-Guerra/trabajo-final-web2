@@ -1,2 +1,5 @@
-@import './core/index.css';
-@import './layout/index.css';
+@import 'core/index.css';
+/*! It doesn't work...
+  @import './components/index.css';
+*/
+@import 'layout/index.css';
