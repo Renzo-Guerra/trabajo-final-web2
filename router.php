@@ -30,6 +30,14 @@
 
       $controller->deleteProperty($subparams[1]); break;
     }
-
+    case 'editar': {
+      // Explode the url to get the property id
+      $subparams = explode('/', $_GET['url']);
+      // If the id is not set
+      if(!isset($subparams[1])){$controller->showHomePage(); break;}
+      $controller->showEditProperty($subparams[1]); break;
+    }
+    case 'editarPropiedad': $controller->editProperty(); break;
+    
     default: echo "404 not found"; break;
   }

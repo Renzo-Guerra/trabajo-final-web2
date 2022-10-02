@@ -26,4 +26,10 @@
       $this->smarty->assign('owners', $owners);
       $this->smarty->display('pages/owners.tpl');
     }
+
+    // Given a data array, displays a form with the data in the array
+    function editProperty($property_data){
+      $this->smarty->assign('property', $property_data);
+      $this->smarty->display('pages/editProperty.tpl');
+    }
   }

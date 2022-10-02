@@ -28,6 +28,17 @@
       return (empty($user))? false : true;
     }
 
+    // Determines weather a property already has that specific id
+    function existProperty($id){
+      $query = $this->db->prepare("SELECT * FROM `tb_propiedad` WHERE `id` = ?");
+      $query->execute([$id]);
+      //Use 'fetch' instead of 'fetchAll' because the dni of the owner MUST be unic, it is imposible to exist 2 equals dni
+      $property = $query->fetch(PDO::FETCH_OBJ);
+      
+      // If already exists a property with that id returns true, otherwise returns false.
+      return (empty($property))? false : true;
+    }
+
     // Adds the new user to the DB
     function addNewUserToDB($dni, $name, $surname, $phone, $mail){
       // Validation wheather it already exists a user with that dni
@@ -68,9 +79,26 @@
 
       return $properties;
     }
-    
+
     function deleteProperty($id_property){
       $query = $this->db->prepare("DELETE FROM tb_propiedad WHERE `id` = ?");
       $query->execute([$id_property]);
+    }
+
+    // Given a id, returns it data.
+    function getPropertyById($id_property){
+      $query = $this->db->prepare("SELECT * FROM tb_propiedad WHERE `id` = ?");
+      $query->execute([$id_property]);
+      $property = $query->fetch(PDO::FETCH_OBJ);
+
+      return $property;
+    }
+
+    // Edit the data of the property (in the DB)
+    function editPropertyDB($id, $title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $owner_dni){
+      if($this->existProperty($id) && $this->existUser($owner_dni)){
+        $query = $this->db->prepare("UPDATE tb_propiedad SET `titulo` = ? ,`tipo` = ?,`operacion` = ?,`descripcion` = ?,`precio` = ?,`metros_cuadrados` = ?,`ambientes` = ?,`banios` = ?,`permite_mascotas` = ?,`propietario` = ? WHERE `id` = ?");
+        $query->execute([$title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $owner_dni, $id]);
+      }
     }
   }
