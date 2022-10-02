@@ -25,6 +25,8 @@
           {/if}
         </div>
       </div>
+      {* If session is running... *}
+      {include file="./actions.tpl"}
     </div>
   {foreachelse}
     <div>
