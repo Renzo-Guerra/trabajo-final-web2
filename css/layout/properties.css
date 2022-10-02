@@ -1,0 +1,39 @@
+/* Main articles container */
+.props-container{
+  display: grid;
+  gap: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  height: fit-content;
+  color: var(--white-color);
+  width: 100%;
+}
+/* Article container */
+.property-container{
+  background-color: var(--primary-color);
+  margin-inline: 1rem;
+  border-radius: 1vh;
+  overflow: hidden;
+}
+/* Left/top side of the article */
+.property-container__left{
+  display: flex;
+  flex-direction: column-reverse;
+}
+.property-container__left h4{
+  padding-left: 1rem;
+}
+.props-container img{
+  width: 100%;
+  height: 15rem;
+  object-fit:cover;
+}
+/* right/bottom side of the article */
+.property-container__right{
+  padding: 1rem;
+}
+.property-container__characteristics{
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem 1.6rem;
+}
