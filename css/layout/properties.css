@@ -47,7 +47,6 @@
   /* Article container */ 
   .property-container{
     display: flex; 
-    background-color: var(--black-color); /*! wtf is going on, i can't even change the bg color... */
   }
   
   /* Left/top side of the article */ 
