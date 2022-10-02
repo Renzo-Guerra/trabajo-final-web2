@@ -1,19 +1,27 @@
-<div class="container d-grid">
+<div class="properties-container">
   {foreach from=$properties item=$property}
-    <div class="properties__property">
-      <h4>{$property->titulo}</h4>
-      <ol>
-        <li>{$property->tipo}</li>
-        <li>{$property->operacion}</li>
-        <li>{$property->descripcion}</li>
-        <li>{$property->precio}</li>
-        <li>{$property->metros_cuadrados}</li>
-        <li>{$property->ambientes}</li>
-        {* Por lo visto sql no se banca la 'ñ' (antes tenia en la db el campo 'baños' pero no me dejaba leerlo aca) *}
-        <li>{$property->banios}</li> 
-        <li>{$property->permite_mascotas}</li>
-        <li>{$property->propietario}</li>
-      </ol>
+    <div class="property-container">
+      <div class="property-container__left"> {* left part *}
+        <h4>{$property->operacion}</h4>
+        <div>
+          {**REMINDER: Learn how to upload images to the DB and then show them *}
+          <img src="assets/img/propiedades/casa1.jpg" alt="Propiedad en venta">
+        </div>
+      </div>
+      <div class="property-container__right"> {* right part *}
+        <h3>{$property->titulo}</h3>
+        <p>{$property->descripcion}</p>
+        <p>$USD: {$property->precio}</p>
+        <div class="characteristics">
+          <div><p>Mts²: {$property->metros_cuadrados}</p></div>
+          <div><p>Ambientes: {$property->ambientes}</p></div>
+          <div><p>Baños: {$property->banios}</p></div>
+          <div><p>Mts²: {$property->metros_cuadrados}</p></div>
+          {if $property->permite_mascotas}
+            <div><p>Permite mascotas</p></div>
+          {/if}
+        </div>
+      </div>
     </div>
   {foreachelse}
     <div>
