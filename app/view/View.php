@@ -38,4 +38,15 @@
     function showRegister(){
       $this->smarty->display('pages/addAdmin.tpl');
     }
+    function showLogIn(){
+      $this->smarty->display('pages/logIn.tpl');
+    }
+
+    function wrongCredentials(){
+      $this->smarty->display('pages/wrongLogIn.tpl');
+    }
+    
+    function goodCredentials(){
+      $this->smarty->display('pages/goodLogIn.tpl');
+    }
   }

@@ -137,9 +137,7 @@
     }
     function addNewAdmin(){
       // Validations
-      if(!isset($_GET['username']) || !isset($_GET['password'])){ header("Location: " . BASE_URL);}
-      if(is_null($_GET['username']) || is_null($_GET['password'])){ header("Location: " . BASE_URL);}
-      if(empty($_GET['username']) || empty($_GET['password'])){ header("Location: " . BASE_URL);}
+      $this->adminValidation();
 
       $username = $_GET['username'];
       $password = $_GET['password'];
@@ -148,5 +146,29 @@
 
       // Redirection
       header("Location: " . BASE_URL);
+    }
+
+    function showLoguearsePage(){
+      $this->view->showLogIn();
+    }
+
+    function verifyLogIn(){
+      $this->adminValidation();
+
+      $username = $_POST['username'];
+      $password = $_POST['password'];
+      
+      $ok = $this->model->verifyLogIn($username, $password);
+      if($ok){
+        $this->view->goodCredentials();
+      }else{
+        $this->view->wrongCredentials();
+      }
+    }
+
+    function adminValidation(){
+      if(!isset($_POST['username']) || !isset($_POST['password'])){ header("Location: " . BASE_URL);}
+      if(is_null($_POST['username']) || is_null($_POST['password'])){ header("Location: " . BASE_URL);}
+      if(empty($_POST['username']) || empty($_POST['password'])){ header("Location: " . BASE_URL);}
     }
   }

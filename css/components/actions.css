@@ -1,4 +1,7 @@
 .actions{
   background-color: black;
-  padding: 3rem;
+  padding: 1rem;
+  display: flex;
+  gap: .6rem;
+  justify-self: flex-end;
 }

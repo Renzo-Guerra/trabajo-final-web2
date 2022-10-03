@@ -120,4 +120,20 @@
       $query = $this->db->prepare("INSERT INTO tb_admin (`nombre_usuario`, `contrasenia`) VALUES (?, ?)");
       $query->execute([$username, $hashed_password]);
     }
+
+    function getAdminByUsername($username){
+      $query = $this->db->prepare("SELECT * FROM `tb_admin` WHERE nombre_usuario = ?");
+      $query->execute([$username]);
+      $user = $query->fetch(PDO::FETCH_OBJ);
+
+      return $user;
+    }
+
+    function verifyLogIn($username, $password){
+      // Validates weather the username already exists
+      if(!$this->existAdmin($username)){ return false;}
+      
+      $admin = $this->getAdminByUsername($username);
+      return (password_verify($password, $admin->contrasenia))? true : false;;
+    }
   }

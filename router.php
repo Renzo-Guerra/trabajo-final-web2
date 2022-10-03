@@ -40,6 +40,7 @@
     case 'editarPropiedad': $controller->editProperty(); break;
     case 'registrarse': $controller->showRegisterPage(); break; 
     case 'crearNuevoAdmin': $controller->addNewAdmin(); break;
-    
+    case 'loguearse': $controller->showLoguearsePage(); break;
+    case 'comprobarLogueoAdmin': $controller->verifyLogIn(); break;
     default: echo "404 not found"; break;
   }
