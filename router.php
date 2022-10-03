@@ -38,6 +38,8 @@
       $controller->showEditProperty($subparams[1]); break;
     }
     case 'editarPropiedad': $controller->editProperty(); break;
+    case 'registrarse': $controller->showRegisterPage(); break; 
+    case 'crearNuevoAdmin': $controller->addNewAdmin(); break;
     
     default: echo "404 not found"; break;
   }

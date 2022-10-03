@@ -34,4 +34,8 @@
       $this->smarty->assign('users', $users);
       $this->smarty->display('pages/editProperty.tpl');
     }
+
+    function showRegister(){
+      $this->smarty->display('pages/addAdmin.tpl');
+    }
   }

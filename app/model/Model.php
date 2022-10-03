@@ -101,4 +101,23 @@
         $query->execute([$title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $owner_dni, $id]);
       }
     }
+
+    // Determines weather an admin already has that specific username
+    function existAdmin($username){
+      $query = $this->db->prepare("SELECT `nombre_usuario` FROM tb_admin WHERE nombre_usuario = ?");
+      $query->execute([$username]);
+      $admin = $query->fetch(PDO::FETCH_OBJ);
+
+      return (empty($admin))? false : true;
+    }
+
+    function addAdmin($username, $password){
+      // Validation
+      if($this->existAdmin($username)){ return;}
+      // Hash the password
+      $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+      // Insert new admin into tb_admin
+      $query = $this->db->prepare("INSERT INTO tb_admin (`nombre_usuario`, `contrasenia`) VALUES (?, ?)");
+      $query->execute([$username, $hashed_password]);
+    }
   }

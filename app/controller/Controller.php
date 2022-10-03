@@ -131,4 +131,22 @@
       // Redirection
       header("Location: " . BASE_URL);
     }
+    
+    function showRegisterPage(){
+      $this->view->showRegister();
+    }
+    function addNewAdmin(){
+      // Validations
+      if(!isset($_GET['username']) || !isset($_GET['password'])){ header("Location: " . BASE_URL);}
+      if(is_null($_GET['username']) || is_null($_GET['password'])){ header("Location: " . BASE_URL);}
+      if(empty($_GET['username']) || empty($_GET['password'])){ header("Location: " . BASE_URL);}
+
+      $username = $_GET['username'];
+      $password = $_GET['password'];
+      
+      $this->model->addAdmin($username, $password);
+
+      // Redirection
+      header("Location: " . BASE_URL);
+    }
   }
