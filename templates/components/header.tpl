@@ -31,11 +31,19 @@
           <a class="nav-link" href="alquiler">Alquiler</a>
         </li>
         {* This last <li></li> will only be seen by the admin *}
+  
         <li class="nav-item mx-5">
           <ul class="navbar-nav">
             <li><a class="nav-link" href="agregarPropiedad">Agregar propiedad</a></li>
             <li><a class="nav-link" href="agregarPropietario">Agregar propietario</a></li>
             <li><a class="nav-link" href="propietarios">Ver propietarios</a></li>
+          </ul>
+        </li>
+        {* This last <li></li> will only be seen by the admin *}
+        <li class="nav-item">
+          <ul class="navbar-nav">
+            <li><a class="nav-link" href="">Iniciar sesion</a></li>
+            <li><a class="nav-link" href="registrarse">Registrarse</a></li>
           </ul>
         </li>
       </ul>
