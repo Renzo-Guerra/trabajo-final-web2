@@ -41,18 +41,21 @@
 @media screen and (min-width: 700px){
   /* Main articles container */ 
   .props-container{
-    width: 88vw; margin-inline: auto; 
+    width: min(90vw, 900px); 
+    margin-inline: auto; 
   }
   
   /* Article container */ 
   .property-container{
-    display: flex; 
+    display: grid; 
+    grid-template-columns: 1fr 2fr;
   }
   
   /* Left/top side of the article */ 
   .property-container__left{
     flex-direction: column; 
     padding: 1rem; 
+    background-color: red;  /* Just to identify the container while editing */
   } 
   
   .props-container img{
@@ -65,6 +68,7 @@
   
   .property-container__right{
     flex-grow: 1;
+    background-color: aqua; /* Just to identify the container while editing */
     display: flex;
     flex-direction: column;
   } 
