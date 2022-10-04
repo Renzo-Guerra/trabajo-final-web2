@@ -47,4 +47,12 @@ class UserModel{
     $query = $this->db->prepare("DELETE FROM tb_propietario WHERE `dni` = ?");
     $query->execute([$user_dni]);
   }
+
+  function getUserById($user_dni){
+    $query = $this->db->prepare("SELECT * FROM tb_propietario WHERE `dni` = ?");
+    $query->execute([$user_dni]);
+    $user_data = $query->fetch(PDO::FETCH_OBJ);
+
+    return $user_data;
+  }
 }

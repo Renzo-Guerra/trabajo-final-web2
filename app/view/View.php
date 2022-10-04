@@ -54,4 +54,11 @@
       $this->smarty->assign('property_and_user', $property_and_user);
       $this->smarty->display('pages/property.tpl');
     }
+
+    function editUser($user_data){
+      // Parsing the varchar to int (The form only accepts 'number')
+      $user_data->telefono = intval($user_data->telefono);
+      $this->smarty->assign('user', $user_data);
+      $this->smarty->display('pages/editUser.tpl');
+    }
   }

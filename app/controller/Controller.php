@@ -189,4 +189,12 @@
 
       header("Location: " . BASE_URL);
     }
+
+    function showEditUserPage($user_dni){
+      // Validation
+      if(!$this->user_model->existUser($user_dni)){header("Location: " . BASE_URL);}
+      
+      $user_data = $this->user_model->getUserById($user_dni);
+      $this->view->editUser($user_data);
+    }
   }

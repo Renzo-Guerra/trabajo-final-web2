@@ -57,5 +57,12 @@
       if(!isset($subparams[1])){header("Location: " . BASE_URL); break;}
       $controller->deleteUser($subparams[1]); break;
     }
+    case 'editarUsuario': {
+      // Explode the url to get the user dni
+      $subparams = explode('/', $_GET['url']);
+      // If the id is not set
+      if(!isset($subparams[1])){header("Location: " . BASE_URL); break;}
+      $controller->showEditUserPage($subparams[1]); break;
+    }
     default: echo "404 not found"; break;
   }
