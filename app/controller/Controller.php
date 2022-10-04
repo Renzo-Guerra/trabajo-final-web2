@@ -1,24 +1,29 @@
 <?php
-  require_once './app/model/Model.php';
+  require_once './app/model/AdminModel.php';
+  require_once './app/model/PropertyModel.php';
+  require_once './app/model/UserModel.php';
   require_once './app/view/View.php';
 
   class Controller{
-    private $model;
+    private $admin_model;
+    private $property_model;
+    private $user_model;
     private $view;
 
     public function __construct(){
-      $this->model = new Model();
+      $this->admin_model = new AdminModel();
+      $this->property_model = new PropertyModel();
+      $this->user_model = new UserModel();
       $this->view = new View();
     }
 
     function showHomePage(){
-      $properties = $this->model->getAllProperties();
+      $properties = $this->property_model->getAllProperties();
       $this->view->displayProperties($properties);
     }
 
-    /**
-     * Validates if every variable is setted and is not null or empty
-     */
+    
+    // Validates if every variable is setted and is not null or empty
     function addNewUser(){
       // Validations
       if(!isset($_GET['dni']) || !isset($_GET['name']) || !isset($_GET['surname']) || !isset($_GET['phone']) || !isset($_GET['mail'])){ header("Location: " . BASE_URL);}
@@ -32,15 +37,13 @@
       $mail = $_GET['mail'];
       
       // 'Add' data to the DB
-      $this->model->addNewUserToDB($dni, $name, $surname, $phone, $mail);
+      $this->user_model->addNewUserToDB($dni, $name, $surname, $phone, $mail);
 
       // Redirection
       header("Location: " . BASE_URL);
     }
 
-    /**
-     * Validates if every variable is setted and is not null or empty
-     */
+    // Validates if every variable is setted and is not null or empty
     function addNewProperty(){
       $this->propertyValidation();
 
@@ -56,14 +59,14 @@
       $owner_dni = $_GET['propietario'];
 
       // 'Add' data to the DB
-      $this->model->addNewPropertyToDB($title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $owner_dni);
+      $this->property_model->addNewPropertyToDB($title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $owner_dni);
       
       // Redirection
       header("Location: " . BASE_URL);
     }
 
     function showAddPropertyPage(){
-      $owners = $this->model->getAllOwners();
+      $owners = $this->user_model->getAllOwners();
       $this->view->showAddProperty($owners);
     }
     
@@ -72,30 +75,29 @@
     }
 
     function showOwnersPage(){
-      $users = $this->model->getAllOwners();
+      $users = $this->user_model->getAllOwners();
       $this->view->displayAllOwners($users);
     }
     
-    /**
-     * Given a operation, the page will show properties that fulfill the 'operation' ('alquiler'/'venta')
-     */
+    // Given a operation, the page will show properties that fulfill the 'operation' ('alquiler'/'venta')
     function showPropertiesOperation($operation){
-      $properties = $this->model->getAllPropertiesWhereOperacionEquals($operation);
+      $properties = $this->property_model->getAllPropertiesWhereOperacionEquals($operation);
       $this->view->displayProperties($properties);
     }
+
     /* Delete a property, then display the homePage */
     function deleteProperty($id_property){
-      $this->model->deleteProperty($id_property);
+      $this->property_model->deleteProperty($id_property);
       $this->showHomePage();
     }
     
     function showEditProperty($id_property){
-      $property_data = $this->model->getPropertyById($id_property);
+      $property_data = $this->property_model->getPropertyById($id_property);
       // If the data is "false"...
       if(empty($property_data)){$this->showHomePage();}
       
       // Get users to show dnis from a select -> option (HTML)
-      $users = $this->model->getAllOwners();
+      $users = $this->user_model->getAllOwners();
       $this->view->editProperty($property_data, $users);
     }
 
@@ -126,7 +128,7 @@
       $allow_pets = $_GET['permite_mascotas'];
       $owner_dni = $_GET['propietario'];
       // 'edit' data in the DB
-      $this->model->editPropertyDB($id, $title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $owner_dni);
+      $this->property_model->editPropertyDB($id, $title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $owner_dni);
       
       // Redirection
       header("Location: " . BASE_URL);
@@ -135,6 +137,7 @@
     function showRegisterPage(){
       $this->view->showRegister();
     }
+
     function addNewAdmin(){
       // Validations
       $this->adminValidation();
@@ -142,7 +145,7 @@
       $username = $_GET['username'];
       $password = $_GET['password'];
       
-      $this->model->addAdmin($username, $password);
+      $this->admin_model->addAdmin($username, $password);
 
       // Redirection
       header("Location: " . BASE_URL);
@@ -158,7 +161,7 @@
       $username = $_POST['username'];
       $password = $_POST['password'];
       
-      $ok = $this->model->verifyLogIn($username, $password);
+      $ok = $this->admin_model->verifyLogIn($username, $password);
       if($ok){
         $this->view->goodCredentials();
       }else{
