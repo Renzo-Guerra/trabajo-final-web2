@@ -23,7 +23,7 @@ class PropertyModel{
   function existProperty($id){
     $query = $this->db->prepare("SELECT * FROM `tb_propiedad` WHERE `id` = ?");
     $query->execute([$id]);
-    //Use 'fetch' instead of 'fetchAll' because the dni of the owner MUST be unic, it is imposible to exist 2 equals dni
+    //Use 'fetch' instead of 'fetchAll' because the dni of the user MUST be unic, it is imposible to exist 2 equals dni
     $property = $query->fetch(PDO::FETCH_OBJ);
     
     // If already exists a property with that id returns true, otherwise returns false.
@@ -31,15 +31,15 @@ class PropertyModel{
   }
 
   /**
-   * Adds a new property to the table (only if the owner dni already exists in the table 'tb_propietario')
+   * Adds a new property to the table (only if the user dni already exists in the table 'tb_propietario')
    */
-  function addNewPropertyToDB($title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $owner_dni){
+  function addNewPropertyToDB($title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $user_dni){
     // Confirm the existance of a user with that dni
-    $exist = $this->user->existUser($owner_dni);
+    $exist = $this->user->existUser($user_dni);
     if(!$exist){ return;}
 
     $query = $this->db->prepare("INSERT INTO `tb_propiedad`(`titulo`, `tipo`, `operacion`, `descripcion`, `precio`, `metros_cuadrados`, `ambientes`, `banios`, `permite_mascotas`, `propietario`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $query->execute([$title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $owner_dni]);
+    $query->execute([$title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $user_dni]);
   }
 
   function getAllPropertiesWhereOperacionEquals($operation){
@@ -65,10 +65,10 @@ class PropertyModel{
   }
 
   // Edit the data of the property (in the DB)
-  function editPropertyDB($id, $title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $owner_dni){
-    if($this->existProperty($id) && $this->user->existUser($owner_dni)){
+  function editPropertyDB($id, $title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $user_dni){
+    if($this->existProperty($id) && $this->user->existUser($user_dni)){
       $query = $this->db->prepare("UPDATE tb_propiedad SET `titulo` = ? ,`tipo` = ?,`operacion` = ?,`descripcion` = ?,`precio` = ?,`metros_cuadrados` = ?,`ambientes` = ?,`banios` = ?,`permite_mascotas` = ?,`propietario` = ? WHERE `id` = ?");
-      $query->execute([$title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $owner_dni, $id]);
+      $query->execute([$title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $user_dni, $id]);
     }
   }
 }

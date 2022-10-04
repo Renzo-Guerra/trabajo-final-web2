@@ -15,11 +15,11 @@
 
   switch ($params[0]) {
     case 'inicio': $controller->showHomePage(); break;
-    case 'agregarPropietario': $controller->showAddOwnerPage(); break;
+    case 'agregarPropietario': $controller->showAddUserPage(); break;
     case 'crearNuevoPropietario': $controller->addNewUser(); break;
     case 'agregarPropiedad': $controller->showAddPropertyPage(); break;
     case 'crearNuevaPropiedad': $controller->addNewProperty(); break;
-    case 'propietarios': $controller->showOwnersPage(); break;
+    case 'propietarios': $controller->showUsersPage(); break;
     case 'venta': $controller->showPropertiesOperation('venta'); break;
     case 'alquiler': $controller->showPropertiesOperation('alquiler'); break;
     case 'eliminar': {

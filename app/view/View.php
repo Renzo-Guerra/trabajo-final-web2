@@ -18,14 +18,14 @@
       $this->smarty->display('pages/addProperty.tpl');
     }
     
-    function showAddOwner(){
-      $this->smarty->display('pages/addOwner.tpl');
+    function showAddUser(){
+      $this->smarty->display('pages/addUser.tpl');
     }
 
     // Can't reuse because has different attributes from property
-    function displayAllOwners($owners){
-      $this->smarty->assign('owners', $owners);
-      $this->smarty->display('pages/owners.tpl');
+    function displayAllUsers($users){
+      $this->smarty->assign('users', $users);
+      $this->smarty->display('pages/users.tpl');
     }
 
     // Given a data array, displays a form with the data in the array

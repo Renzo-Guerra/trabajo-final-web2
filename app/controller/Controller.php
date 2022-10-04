@@ -56,27 +56,27 @@
       $rooms = $_GET['ambientes'];
       $bathrooms = $_GET['banios'];
       $allow_pets = $_GET['permite_mascotas'];
-      $owner_dni = $_GET['propietario'];
+      $user_dni = $_GET['propietario'];
 
       // 'Add' data to the DB
-      $this->property_model->addNewPropertyToDB($title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $owner_dni);
+      $this->property_model->addNewPropertyToDB($title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $user_dni);
       
       // Redirection
       header("Location: " . BASE_URL);
     }
 
     function showAddPropertyPage(){
-      $owners = $this->user_model->getAllOwners();
-      $this->view->showAddProperty($owners);
+      $users = $this->user_model->getAllUsers();
+      $this->view->showAddProperty($users);
     }
     
-    function showAddOwnerPage(){
-      $this->view->showAddOwner();
+    function showAddUserPage(){
+      $this->view->showAdduser();
     }
 
-    function showOwnersPage(){
-      $users = $this->user_model->getAllOwners();
-      $this->view->displayAllOwners($users);
+    function showUsersPage(){
+      $users = $this->user_model->getAllUsers();
+      $this->view->displayAllUsers($users);
     }
     
     // Given a operation, the page will show properties that fulfill the 'operation' ('alquiler'/'venta')
@@ -97,7 +97,7 @@
       if(empty($property_data)){$this->showHomePage();}
       
       // Get users to show dnis from a select -> option (HTML)
-      $users = $this->user_model->getAllOwners();
+      $users = $this->user_model->getAllUsers();
       $this->view->editProperty($property_data, $users);
     }
 
@@ -126,9 +126,9 @@
       $rooms = $_GET['ambientes'];
       $bathrooms = $_GET['banios'];
       $allow_pets = $_GET['permite_mascotas'];
-      $owner_dni = $_GET['propietario'];
+      $user_dni = $_GET['propietario'];
       // 'edit' data in the DB
-      $this->property_model->editPropertyDB($id, $title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $owner_dni);
+      $this->property_model->editPropertyDB($id, $title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $user_dni);
       
       // Redirection
       header("Location: " . BASE_URL);

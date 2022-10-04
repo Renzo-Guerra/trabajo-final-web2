@@ -12,7 +12,7 @@ class UserModel{
   function existUser($user_dni){
     $query = $this->db->prepare("SELECT * FROM `tb_propietario` WHERE `dni` = ?");
     $query->execute([$user_dni]);
-    //Use 'fetch' instead of 'fetchAll' because the dni of the owner MUST be unic, it is imposible to exist 2 equals dni
+    //Use 'fetch' instead of 'fetchAll' because the dni of the user MUST be unic, it is imposible to exist 2 equals dni
     $user = $query->fetch(PDO::FETCH_OBJ);
     
     // If already exists a user with that DNI returns true, otherwise returns false.
@@ -30,13 +30,13 @@ class UserModel{
   }
 
   /**
-   * Obtains all the owners from 'tb_propietarios'
+   * Obtains all the users from 'tb_propietarios'
    */
-  function getAllOwners(){
+  function getAllUsers(){
     $query = $this->db->prepare("SELECT * FROM tb_propietario");
     $query->execute();
-    $owners = $query->fetchAll(PDO::FETCH_OBJ);
+    $users = $query->fetchAll(PDO::FETCH_OBJ);
 
-    return $owners;
+    return $users;
   }
 }
