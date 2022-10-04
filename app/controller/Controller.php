@@ -174,4 +174,13 @@
       if(is_null($_POST['username']) || is_null($_POST['password'])){ header("Location: " . BASE_URL);}
       if(empty($_POST['username']) || empty($_POST['password'])){ header("Location: " . BASE_URL);}
     }
+
+    function showProperty($id_property){
+      $exist = $this->property_model->existProperty($id_property);
+      // Validation
+      if(!$exist){header("Location: " . BASE_URL);}
+      // Get property and user data
+      $property_and_user = $this->property_model->getPropertyAndUserById($id_property);
+      $this->view->showProperty($property_and_user);
+    }
   }

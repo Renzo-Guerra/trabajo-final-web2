@@ -25,6 +25,9 @@
               <span><i class="fa-solid fa-paw"></i> mascotas</span>
             {/if}
           </div>
+          <div>
+            <a href="propiedad/{$property->id}"><button>Ver más</button></a>
+          </div>
         </div>
         {** If session is running... *}
         {include file="./actions.tpl"}

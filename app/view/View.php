@@ -49,4 +49,9 @@
     function goodCredentials(){
       $this->smarty->display('pages/goodLogIn.tpl');
     }
+
+    function showProperty($property_and_user){
+      $this->smarty->assign('property_and_user', $property_and_user);
+      $this->smarty->display('pages/property.tpl');
+    }
   }

@@ -42,5 +42,13 @@
     case 'crearNuevoAdmin': $controller->addNewAdmin(); break;
     case 'loguearse': $controller->showLoguearsePage(); break;
     case 'comprobarLogueoAdmin': $controller->verifyLogIn(); break;
+    case 'propiedad':{ 
+      // Explode the url to get the property id
+      $subparams = explode('/', $_GET['url']);
+      // [0] = "propiedad" [1] = :id
+      if(!isset($subparams[1])){header("Location: " . BASE_URL); break;} 
+      $controller->showProperty($subparams[1]);
+      break; 
+    }
     default: echo "404 not found"; break;
   }

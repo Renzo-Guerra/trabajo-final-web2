@@ -71,4 +71,11 @@ class PropertyModel{
       $query->execute([$title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $user_dni, $id]);
     }
   }
+  function getPropertyAndUserById($id_property){
+    $query = $this->db->prepare("SELECT a.*, b.* FROM tb_propiedad a INNER JOIN tb_propietario b ON a.propietario = b.dni WHERE a.id = ?");
+    $query->execute([$id_property]);
+    $property_and_user = $query->fetch(PDO::FETCH_OBJ);
+
+    return $property_and_user;
+  }
 }
