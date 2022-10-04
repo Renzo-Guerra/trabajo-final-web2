@@ -64,5 +64,6 @@
       if(!isset($subparams[1])){header("Location: " . BASE_URL); break;}
       $controller->showEditUserPage($subparams[1]); break;
     }
+    case 'editarUsuarioDB': { $controller->editUserDB(); break;}
     default: echo "404 not found"; break;
   }

@@ -26,9 +26,6 @@
     // Validates if every variable is setted and is not null or empty
     function addNewUser(){
       // Validations
-      if(!isset($_GET['dni']) || !isset($_GET['name']) || !isset($_GET['surname']) || !isset($_GET['phone']) || !isset($_GET['mail'])){ header("Location: " . BASE_URL);}
-      if(is_null($_GET['dni']) || is_null($_GET['name']) || is_null($_GET['surname']) || is_null($_GET['phone']) || is_null($_GET['mail'])){ header("Location: " . BASE_URL);}
-      if(empty($_GET['dni']) || empty($_GET['name']) || empty($_GET['surname']) || empty($_GET['phone']) || empty($_GET['mail'])){ header("Location: " . BASE_URL);}
       
       $name = $_GET['name'];
       $surname = $_GET['surname'];
@@ -113,6 +110,13 @@
       if(($_GET['permite_mascotas'] != "true") && ($_GET['permite_mascotas'] != "false")){ header("Location: " . BASE_URL);}
     }
 
+    private function userValidation(){
+      if(!isset($_GET['dni']) || !isset($_GET['name']) || !isset($_GET['surname']) || !isset($_GET['phone']) || !isset($_GET['mail'])){ header("Location: " . BASE_URL);}
+      if(is_null($_GET['dni']) || is_null($_GET['name']) || is_null($_GET['surname']) || is_null($_GET['phone']) || is_null($_GET['mail'])){ header("Location: " . BASE_URL);}
+      if(empty($_GET['dni']) || empty($_GET['name']) || empty($_GET['surname']) || empty($_GET['phone']) || empty($_GET['mail'])){ header("Location: " . BASE_URL);}
+    }
+
+
     function editProperty(){
       $this->propertyValidation();
 
@@ -196,5 +200,15 @@
       
       $user_data = $this->user_model->getUserById($user_dni);
       $this->view->editUser($user_data);
+    }
+
+    function editUserDB(){
+      // Validations 
+      $this->userValidation(); // checks the 'isset', 'is_null' and 'empty'
+      if(!$this->user_model->existUser($_GET['dni'])){header("Location: " . BASE_URL);}
+
+      $this->user_model->editUser($_GET['dni'], $_GET['name'], $_GET['surname'], $_GET['phone'], $_GET['mail']);
+
+      header("Location: " . BASE_URL);
     }
   }

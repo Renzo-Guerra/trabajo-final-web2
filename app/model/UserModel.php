@@ -55,4 +55,9 @@ class UserModel{
 
     return $user_data;
   }
+
+  function editUser($dni, $nombre, $apellido, $telefono, $mail){
+    $query = $this->db->prepare("UPDATE tb_propietario SET `nombre` = ?,`apellido` = ?,`telefono` = ?,`mail`= ?  WHERE `dni` = ?");
+    $query->execute([$nombre, $apellido, $telefono, $mail, $dni]);
+  }
 }
