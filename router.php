@@ -34,7 +34,7 @@
       // Explode the url to get the property id
       $subparams = explode('/', $_GET['url']);
       // If the id is not set
-      if(!isset($subparams[1])){$controller->showHomePage(); break;}
+      if(!isset($subparams[1])){header("Location: " . BASE_URL); break;}
       $controller->showEditProperty($subparams[1]); break;
     }
     case 'editarPropiedad': $controller->editProperty(); break;

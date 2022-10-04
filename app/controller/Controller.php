@@ -88,13 +88,13 @@
     /* Delete a property, then display the homePage */
     function deleteProperty($id_property){
       $this->property_model->deleteProperty($id_property);
-      $this->showHomePage();
+      header("Location: " . BASE_URL);
     }
     
     function showEditProperty($id_property){
       $property_data = $this->property_model->getPropertyById($id_property);
       // If the data is "false"...
-      if(empty($property_data)){$this->showHomePage();}
+      if(empty($property_data)){header("Location: " . BASE_URL);}
       
       // Get users to show dnis from a select -> option (HTML)
       $users = $this->user_model->getAllUsers();
