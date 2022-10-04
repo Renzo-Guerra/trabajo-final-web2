@@ -72,7 +72,7 @@ class PropertyModel{
     }
   }
   function getPropertyAndUserById($id_property){
-    $query = $this->db->prepare("SELECT a.*, b.* FROM tb_propiedad a INNER JOIN tb_propietario b ON a.propietario = b.dni WHERE a.id = ?");
+    $query = $this->db->prepare("SELECT a.*, b.nombre, b.apellido, b.telefono, b.mail FROM tb_propiedad AS a JOIN tb_propietario AS b ON a.propietario = b.dni WHERE a.id = ?");
     $query->execute([$id_property]);
     $property_and_user = $query->fetch(PDO::FETCH_OBJ);
 

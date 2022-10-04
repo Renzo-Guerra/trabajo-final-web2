@@ -12,7 +12,6 @@
     <li>Propietario (dni): {$property_and_user->propietario}</li>
   </ul>
   <ul>
-    <li>Dni: {$property_and_user->dni}</li>
     <li>Nombre: {$property_and_user->nombre}</li>
     <li>Apellido: {$property_and_user->apellido}</li>
     <li>Telefono: {$property_and_user->telefono}</li>
