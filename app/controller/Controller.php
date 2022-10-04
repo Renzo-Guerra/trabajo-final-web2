@@ -183,4 +183,10 @@
       $property_and_user = $this->property_model->getPropertyAndUserById($id_property);
       $this->view->showProperty($property_and_user);
     }
+    
+    function deleteUser($user_dni){
+      $this->user_model->deleteUser($user_dni);
+
+      header("Location: " . BASE_URL);
+    }
   }

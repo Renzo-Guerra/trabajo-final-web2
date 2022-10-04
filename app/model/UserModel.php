@@ -39,4 +39,12 @@ class UserModel{
 
     return $users;
   }
+
+  function deleteUser($user_dni){
+    // Validation
+    if(!$this->existUser($user_dni)){ return;}
+
+    $query = $this->db->prepare("DELETE FROM tb_propietario WHERE `dni` = ?");
+    $query->execute([$user_dni]);
+  }
 }

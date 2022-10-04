@@ -7,6 +7,7 @@
         <li>Telefono: {$user->telefono}</li>
         <li>Mail: {$user->mail}</li>
       </ol>
+      {include file="./userActions.tpl"}
     </div>
   {foreachelse}
     <div>
