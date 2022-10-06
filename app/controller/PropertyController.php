@@ -1,43 +1,26 @@
 <?php
-  require_once './app/model/AdminModel.php';
   require_once './app/model/PropertyModel.php';
   require_once './app/model/UserModel.php';
-  require_once './app/view/View.php';
+  require_once './app/view/PropertyView.php';
+  require_once './app/view/AdminView.php';
 
-  class Controller{
-    private $admin_model;
+  
+  class PropertyController{
     private $property_model;
     private $user_model;
-    private $view;
+    private $property_view;
+    private $admin_view;
 
     public function __construct(){
-      $this->admin_model = new AdminModel();
       $this->property_model = new PropertyModel();
       $this->user_model = new UserModel();
-      $this->view = new View();
+      $this->property_view = new PropertyView();
+      $this->admin_view = new AdminView();
     }
 
     function showHomePage(){
       $properties = $this->property_model->getAllProperties();
-      $this->view->displayProperties($properties);
-    }
-
-    
-    // Validates if every variable is setted and is not null or empty
-    function addNewUser(){
-      // Validations
-      
-      $name = $_GET['name'];
-      $surname = $_GET['surname'];
-      $dni = $_GET['dni'];
-      $phone = $_GET['phone'];
-      $mail = $_GET['mail'];
-      
-      // 'Add' data to the DB
-      $this->user_model->addNewUserToDB($dni, $name, $surname, $phone, $mail);
-
-      // Redirection
-      header("Location: " . BASE_URL);
+      $this->property_view->displayProperties($properties);
     }
 
     // Validates if every variable is setted and is not null or empty
@@ -62,24 +45,10 @@
       header("Location: " . BASE_URL);
     }
 
-    function showAddPropertyPage(){
-      $users = $this->user_model->getAllUsers();
-      $this->view->showAddProperty($users);
-    }
-    
-    function showAddUserPage(){
-      $this->view->showAdduser();
-    }
-
-    function showUsersPage(){
-      $users = $this->user_model->getAllUsers();
-      $this->view->displayAllUsers($users);
-    }
-    
     // Given a operation, the page will show properties that fulfill the 'operation' ('alquiler'/'venta')
     function showPropertiesOperation($operation){
       $properties = $this->property_model->getAllPropertiesWhereOperacionEquals($operation);
-      $this->view->displayProperties($properties);
+      $this->property_view->displayProperties($properties);
     }
 
     /* Delete a property, then display the homePage */
@@ -87,7 +56,7 @@
       $this->property_model->deleteProperty($id_property);
       header("Location: " . BASE_URL);
     }
-    
+
     function showEditProperty($id_property){
       $property_data = $this->property_model->getPropertyById($id_property);
       // If the data is "false"...
@@ -95,9 +64,14 @@
       
       // Get users to show dnis from a select -> option (HTML)
       $users = $this->user_model->getAllUsers();
-      $this->view->editProperty($property_data, $users);
+      $this->admin_view->editProperty($property_data, $users);
     }
 
+    function showAddPropertyPage(){
+      $users = $this->user_model->getAllUsers();
+      $this->admin_view->showAddProperty($users);
+    }
+    
     // Validates the isset, is_null and empty. Plus select/options and radio values.
     private function propertyValidation(){
       // Validations
@@ -109,13 +83,6 @@
       if(($_GET['operacion'] != 'alquiler') && ($_GET['operacion'] == 'venta')){ header("Location: " . BASE_URL);}
       if(($_GET['permite_mascotas'] != "true") && ($_GET['permite_mascotas'] != "false")){ header("Location: " . BASE_URL);}
     }
-
-    private function userValidation(){
-      if(!isset($_GET['dni']) || !isset($_GET['name']) || !isset($_GET['surname']) || !isset($_GET['phone']) || !isset($_GET['mail'])){ header("Location: " . BASE_URL);}
-      if(is_null($_GET['dni']) || is_null($_GET['name']) || is_null($_GET['surname']) || is_null($_GET['phone']) || is_null($_GET['mail'])){ header("Location: " . BASE_URL);}
-      if(empty($_GET['dni']) || empty($_GET['name']) || empty($_GET['surname']) || empty($_GET['phone']) || empty($_GET['mail'])){ header("Location: " . BASE_URL);}
-    }
-
 
     function editProperty(){
       $this->propertyValidation();
@@ -137,47 +104,6 @@
       // Redirection
       header("Location: " . BASE_URL);
     }
-    
-    function showRegisterPage(){
-      $this->view->showRegister();
-    }
-
-    function addNewAdmin(){
-      // Validations
-      $this->adminValidation();
-
-      $username = $_GET['username'];
-      $password = $_GET['password'];
-      
-      $this->admin_model->addAdmin($username, $password);
-
-      // Redirection
-      header("Location: " . BASE_URL);
-    }
-
-    function showLoguearsePage(){
-      $this->view->showLogIn();
-    }
-
-    function verifyLogIn(){
-      $this->adminValidation();
-
-      $username = $_POST['username'];
-      $password = $_POST['password'];
-      
-      $ok = $this->admin_model->verifyLogIn($username, $password);
-      if($ok){
-        $this->view->goodCredentials();
-      }else{
-        $this->view->wrongCredentials();
-      }
-    }
-
-    function adminValidation(){
-      if(!isset($_POST['username']) || !isset($_POST['password'])){ header("Location: " . BASE_URL);}
-      if(is_null($_POST['username']) || is_null($_POST['password'])){ header("Location: " . BASE_URL);}
-      if(empty($_POST['username']) || empty($_POST['password'])){ header("Location: " . BASE_URL);}
-    }
 
     function showProperty($id_property){
       $exist = $this->property_model->existProperty($id_property);
@@ -185,30 +111,6 @@
       if(!$exist){header("Location: " . BASE_URL);}
       // Get property and user data
       $property_and_user = $this->property_model->getPropertyAndUserById($id_property);
-      $this->view->showProperty($property_and_user);
-    }
-    
-    function deleteUser($user_dni){
-      $this->user_model->deleteUser($user_dni);
-
-      header("Location: " . BASE_URL);
-    }
-
-    function showEditUserPage($user_dni){
-      // Validation
-      if(!$this->user_model->existUser($user_dni)){header("Location: " . BASE_URL);}
-      
-      $user_data = $this->user_model->getUserById($user_dni);
-      $this->view->editUser($user_data);
-    }
-
-    function editUserDB(){
-      // Validations 
-      $this->userValidation(); // checks the 'isset', 'is_null' and 'empty'
-      if(!$this->user_model->existUser($_GET['dni'])){header("Location: " . BASE_URL);}
-
-      $this->user_model->editUser($_GET['dni'], $_GET['name'], $_GET['surname'], $_GET['phone'], $_GET['mail']);
-
-      header("Location: " . BASE_URL);
+      $this->property_view->showProperty($property_and_user);
     }
   }

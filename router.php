@@ -1,5 +1,8 @@
 <?php 
-  require_once './app/controller/Controller.php';
+  require_once './app/controller/AdminController.php';
+  require_once './app/controller/PropertyController.php';
+  require_once './app/controller/RegisterController.php';
+  require_once './app/controller/UserController.php';
 
   define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
   
@@ -11,43 +14,46 @@
 
   $params = explode('/', $choosen_url);
   
-  $controller = new Controller();
+  $admin_controller = new AdminController();
+  $property_controller = new PropertyController();
+  $register_controller = new RegisterController();
+  $user_controller = new UserController();
 
   switch ($params[0]) {
-    case 'inicio': $controller->showHomePage(); break;
-    case 'agregarPropietario': $controller->showAddUserPage(); break;
-    case 'crearNuevoPropietario': $controller->addNewUser(); break;
-    case 'agregarPropiedad': $controller->showAddPropertyPage(); break;
-    case 'crearNuevaPropiedad': $controller->addNewProperty(); break;
-    case 'propietarios': $controller->showUsersPage(); break;
-    case 'venta': $controller->showPropertiesOperation('venta'); break;
-    case 'alquiler': $controller->showPropertiesOperation('alquiler'); break;
+    case 'inicio': $property_controller->showHomePage(); break;
+    case 'agregarPropietario': $admin_controller->showAddUserPage(); break;
+    case 'crearNuevoPropietario': $user_controller->addNewUser(); break;
+    case 'agregarPropiedad': $property_controller->showAddPropertyPage(); break;
+    case 'crearNuevaPropiedad': $property_controller->addNewProperty(); break;
+    case 'propietarios': $user_controller->showUsersPage(); break;
+    case 'venta': $property_controller->showPropertiesOperation('venta'); break;
+    case 'alquiler': $property_controller->showPropertiesOperation('alquiler'); break;
     case 'eliminar': {
       // Explode the url to get the property id
       $subparams = explode('/', $_GET['url']);
       // If the id is not set
       if(!isset($subparams[1])){header("Location: " . BASE_URL); break;}
 
-      $controller->deleteProperty($subparams[1]); break;
+      $property_controller->deleteProperty($subparams[1]); break;
     }
     case 'editar': {
       // Explode the url to get the property id
       $subparams = explode('/', $_GET['url']);
       // If the id is not set
       if(!isset($subparams[1])){header("Location: " . BASE_URL); break;}
-      $controller->showEditProperty($subparams[1]); break;
+      $property_controller->showEditProperty($subparams[1]); break;
     }
-    case 'editarPropiedad': $controller->editProperty(); break;
-    case 'registrarse': $controller->showRegisterPage(); break; 
-    case 'crearNuevoAdmin': $controller->addNewAdmin(); break;
-    case 'loguearse': $controller->showLoguearsePage(); break;
-    case 'comprobarLogueoAdmin': $controller->verifyLogIn(); break;
+    case 'editarPropiedad': $property_controller->editProperty(); break;
+    case 'registrarse': $register_controller->showRegisterPage(); break; 
+    case 'crearNuevoAdmin': $admin_controller->addNewAdmin(); break;
+    case 'loguearse': $register_controller->showLoguearsePage(); break;
+    case 'comprobarLogueoAdmin': $register_controller->verifyLogIn(); break;
     case 'propiedad':{ 
       // Explode the url to get the property id
       $subparams = explode('/', $_GET['url']);
       // [0] = "propiedad" [1] = :id
       if(!isset($subparams[1])){header("Location: " . BASE_URL); break;} 
-      $controller->showProperty($subparams[1]);
+      $property_controller->showProperty($subparams[1]);
       break; 
     }
     case 'eliminarUsuario': {
@@ -55,15 +61,15 @@
       $subparams = explode('/', $_GET['url']);
       // If the id is not set
       if(!isset($subparams[1])){header("Location: " . BASE_URL); break;}
-      $controller->deleteUser($subparams[1]); break;
+      $user_controller->deleteUser($subparams[1]); break;
     }
     case 'editarUsuario': {
       // Explode the url to get the user dni
       $subparams = explode('/', $_GET['url']);
       // If the id is not set
       if(!isset($subparams[1])){header("Location: " . BASE_URL); break;}
-      $controller->showEditUserPage($subparams[1]); break;
+      $user_controller->showEditUserPage($subparams[1]); break;
     }
-    case 'editarUsuarioDB': { $controller->editUserDB(); break;}
+    case 'editarUsuarioDB': { $user_controller->editUserDB(); break;}
     default: echo "404 not found"; break;
   }
