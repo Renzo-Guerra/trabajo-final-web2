@@ -55,7 +55,6 @@
   .property-container__left{
     flex-direction: column; 
     padding: 1rem; 
-    background-color: red;  /* Just to identify the container while editing */
   } 
   
   .props-container img{
@@ -68,7 +67,6 @@
   
   .property-container__right{
     flex-grow: 1;
-    background-color: aqua; /* Just to identify the container while editing */
     display: flex;
     flex-direction: column;
   } 
