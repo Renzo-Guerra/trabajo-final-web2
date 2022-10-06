@@ -1,7 +1,13 @@
 .actions{
-  background-color: black;
+  background-color: var(--black-color);
   padding: 1rem;
   display: flex;
-  gap: .6rem;
-  justify-self: flex-end;
+  gap: 1.2rem;
+  justify-content: flex-end; /* Should be ok with this */
+}
+
+@media screen and (min-width: 700px){
+  .actions{
+    grid-column: 1 / 3; /* Breaking the grid layout on purpose */
+  }
 }
