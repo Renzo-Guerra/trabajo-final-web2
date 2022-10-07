@@ -28,13 +28,7 @@
       }
     }
 
-    function showRegisterPage(){
-      $this->register_view->showRegister();
-    }
-
     function showLoguearsePage(){
       $this->register_view->showLogIn();
     }
-
-
   }

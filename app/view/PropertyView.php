@@ -18,4 +18,15 @@
       $this->smarty->display('pages/property.tpl');
     }
     
+    function showAddProperty($users){
+      $this->smarty->assign('users', $users);
+      $this->smarty->display('pages/addProperty.tpl');
+    }
+
+    // Given a data array, displays a form with the data in the array
+    function editProperty($property_data, $users){
+      $this->smarty->assign('property', $property_data);
+      $this->smarty->assign('users', $users);
+      $this->smarty->display('pages/editProperty.tpl');
+    }
   }

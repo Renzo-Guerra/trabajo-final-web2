@@ -41,10 +41,7 @@
         </li>
         {* This last <li></li> will only be seen by the admin *}
         <li class="nav-item">
-          <ul class="navbar-nav">
-            <li><a class="nav-link" href="loguearse">Iniciar sesion</a></li>
-            <li><a class="nav-link" href="registrarse">Registrarse</a></li>
-          </ul>
+            <a class="nav-link" href="loguearse">Iniciar sesion</a>
         </li>
       </ul>
     </div>

@@ -2,20 +2,17 @@
   require_once './app/model/PropertyModel.php';
   require_once './app/model/UserModel.php';
   require_once './app/view/PropertyView.php';
-  require_once './app/view/AdminView.php';
 
   
   class PropertyController{
     private $property_model;
     private $user_model;
     private $property_view;
-    private $admin_view;
 
     public function __construct(){
       $this->property_model = new PropertyModel();
       $this->user_model = new UserModel();
       $this->property_view = new PropertyView();
-      $this->admin_view = new AdminView();
     }
 
     function showHomePage(){
@@ -64,12 +61,12 @@
       
       // Get users to show dnis from a select -> option (HTML)
       $users = $this->user_model->getAllUsers();
-      $this->admin_view->editProperty($property_data, $users);
+      $this->property_view->editProperty($property_data, $users);
     }
 
     function showAddPropertyPage(){
       $users = $this->user_model->getAllUsers();
-      $this->admin_view->showAddProperty($users);
+      $this->property_view->showAddProperty($users);
     }
     
     // Validates the isset, is_null and empty. Plus select/options and radio values.

@@ -1,5 +1,4 @@
 <?php 
-  require_once './app/controller/AdminController.php';
   require_once './app/controller/PropertyController.php';
   require_once './app/controller/RegisterController.php';
   require_once './app/controller/UserController.php';
@@ -14,14 +13,13 @@
 
   $params = explode('/', $choosen_url);
   
-  $admin_controller = new AdminController();
   $property_controller = new PropertyController();
   $register_controller = new RegisterController();
   $user_controller = new UserController();
 
   switch ($params[0]) {
     case 'inicio': $property_controller->showHomePage(); break;
-    case 'agregarPropietario': $admin_controller->showAddUserPage(); break;
+    case 'agregarPropietario': $user_controller->showAddUserPage(); break;
     case 'crearNuevoPropietario': $user_controller->addNewUser(); break;
     case 'agregarPropiedad': $property_controller->showAddPropertyPage(); break;
     case 'crearNuevaPropiedad': $property_controller->addNewProperty(); break;
@@ -44,8 +42,6 @@
       $property_controller->showEditProperty($subparams[1]); break;
     }
     case 'editarPropiedad': $property_controller->editProperty(); break;
-    case 'registrarse': $register_controller->showRegisterPage(); break; 
-    case 'crearNuevoAdmin': $admin_controller->addNewAdmin(); break;
     case 'loguearse': $register_controller->showLoguearsePage(); break;
     case 'comprobarLogueoAdmin': $register_controller->verifyLogIn(); break;
     case 'propiedad':{ 

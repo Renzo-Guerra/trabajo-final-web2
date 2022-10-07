@@ -1,17 +1,14 @@
 <?php
   require_once './app/model/UserModel.php';
   require_once './app/view/UserView.php';
-  require_once './app/view/AdminView.php';
 
   class UserController{
     private $user_model;
     private $user_view;
-    private $admin_view;
 
     public function __construct(){
       $this->user_model = new UserModel();
       $this->user_view = new UserView();
-      $this->admin_view = new AdminView();
     }
 
     // Validates if every variable is setted and is not null or empty
@@ -53,7 +50,7 @@
       if(!$this->user_model->existUser($user_dni)){header("Location: " . BASE_URL);}
       
       $user_data = $this->user_model->getUserById($user_dni);
-      $this->admin_view->editUser($user_data);
+      $this->user_view->editUser($user_data);
     }
 
     function editUserDB(){
@@ -64,5 +61,9 @@
       $this->user_model->editUser($_GET['dni'], $_GET['name'], $_GET['surname'], $_GET['phone'], $_GET['mail']);
 
       header("Location: " . BASE_URL);
+    }
+
+    function showAddUserPage(){
+      $this->user_view->showAdduser();
     }
   }
