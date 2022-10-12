@@ -9,5 +9,8 @@
     <input type="password" id="password" name="password" required>
   </div>
   <button type="submit">Confirmar</button>
+  {if $error}
+    <p>{$error}</p>
+  {/if}
 </form>
 {include file="../components/footer.tpl"}

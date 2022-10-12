@@ -8,7 +8,8 @@
       $this->smarty = new Smarty();
     }
     
-    function showLogIn(){
+    function showLogIn($error = null){
+      $this->smarty->assign('error', $error);
       $this->smarty->display('pages/logIn.tpl');
     }
   }

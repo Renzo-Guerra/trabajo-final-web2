@@ -13,8 +13,9 @@
 
     // Validates if every variable is setted and is not null or empty
     function addNewUser(){
+      session_start();
+      if(!isset($_SESSION['USERNAME'])){header("Location: " . BASE_URL);}
       // Validations
-      
       $name = $_GET['name'];
       $surname = $_GET['surname'];
       $dni = $_GET['dni'];
@@ -29,6 +30,8 @@
     }
 
     function showUsersPage(){
+      session_start();
+      if(!isset($_SESSION['USERNAME'])){header("Location: " . BASE_URL);}
       $users = $this->user_model->getAllUsers();
       $this->user_view->displayAllUsers($users);
     }
@@ -40,12 +43,16 @@
     }
 
     function deleteUser($user_dni){
+      session_start();
+      if(!isset($_SESSION['USERNAME'])){header("Location: " . BASE_URL);}
       $this->user_model->deleteUser($user_dni);
 
       header("Location: " . BASE_URL . "propietarios");
     }
 
     function showEditUserPage($user_dni){
+      session_start();
+      if(!isset($_SESSION['USERNAME'])){header("Location: " . BASE_URL);}
       // Validation
       if(!$this->user_model->existUser($user_dni)){header("Location: " . BASE_URL);}
       
@@ -54,6 +61,8 @@
     }
 
     function editUserDB(){
+      session_start();
+      if(!isset($_SESSION['USERNAME'])){header("Location: " . BASE_URL);}
       // Validations 
       $this->userValidation(); // checks the 'isset', 'is_null' and 'empty'
       if(!$this->user_model->existUser($_GET['dni'])){header("Location: " . BASE_URL);}
@@ -64,6 +73,8 @@
     }
 
     function showAddUserPage(){
+      session_start();
+      if(!isset($_SESSION['USERNAME'])){header("Location: " . BASE_URL);}
       $this->user_view->showAdduser();
     }
   }

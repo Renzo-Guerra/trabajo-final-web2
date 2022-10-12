@@ -31,7 +31,9 @@
           </div>
         </div>
         {** If session is running... *}
-        {include file="../components/actions.tpl"}
+        {if isset($smarty.session.USERNAME)}
+          {include file="../components/actions.tpl"}
+        {/if}
       </div>    
     {/foreach}
   {else} {*! Else doesn't working... *}

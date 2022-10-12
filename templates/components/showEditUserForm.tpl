@@ -1,6 +1,6 @@
 <form action="editarUsuarioDB" class="container-sm">
   <div class="container-sm p-4 bg-success d-grid gap-4">
-    <h3 class="my-3 text-center">Editar usuario</h3>
+    <h3 class="my-3 text-center">{$form_headign}</h3>
     <input type="hidden" name="dni" value="{$user->dni}">
     <div class="d-flex justify-content-between">
       <label for="owner_name">Nombre: </label>
@@ -18,6 +18,6 @@
       <label for="owner_mail">Mail: </label>
       <input type="mail" id="owner_mail" name="mail" value="{$user->mail}" required>
     </div>
-    <button class="btn btn-primary">Confirmar cambios</button>
+    <button class="btn btn-primary">{$confirm_button}</button>
   </div>
 </form>

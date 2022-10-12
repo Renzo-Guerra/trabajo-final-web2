@@ -32,6 +32,7 @@
         </li>
         {* This last <li></li> will only be seen by the admin *}
   
+        {if isset($smarty.session.USERNAME)}
         <li class="nav-item mx-5">
           <ul class="navbar-nav">
             <li><a class="nav-link" href="agregarPropiedad">Agregar propiedad</a></li>
@@ -39,9 +40,14 @@
             <li><a class="nav-link" href="propietarios">Ver propietarios</a></li>
           </ul>
         </li>
+        {/if}
         {* This last <li></li> will only be seen by the admin *}
         <li class="nav-item">
-            <a class="nav-link" href="loguearse">Iniciar sesion</a>
+          {if !isset($smarty.session.USERNAME)}
+            <a class="nav-link" href="loguearse">Iniciar sesión</a>
+          {else}
+            <a class="nav-link" href="desloguearse">Cerrar sesión</a>
+          {/if}
         </li>
       </ul>
     </div>

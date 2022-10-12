@@ -14,6 +14,8 @@
     }
     
     function showAddUser(){
+      $this->smarty->assign('form_headign', "Agregar usuario");
+      $this->smarty->assign('confirm_button', "Agregar usuario");
       $this->smarty->display('pages/addUser.tpl');
     }
 
@@ -21,6 +23,8 @@
       // Parsing the varchar to int (The form only accepts 'number')
       $user_data->telefono = intval($user_data->telefono);
       $this->smarty->assign('user', $user_data);
+      $this->smarty->assign('form_headign', "Editar usuario");
+      $this->smarty->assign('confirm_button', "Confirmar cambios");
       $this->smarty->display('pages/editUser.tpl');
     }
   }

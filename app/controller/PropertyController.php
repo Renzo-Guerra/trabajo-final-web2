@@ -16,12 +16,15 @@
     }
 
     function showHomePage(){
+      session_start();
       $properties = $this->property_model->getAllProperties();
       $this->property_view->displayProperties($properties);
     }
 
     // Validates if every variable is setted and is not null or empty
     function addNewProperty(){
+      session_start();
+      if(!isset($_SESSION['USERNAME'])){header("Location: " . BASE_URL);}
       $this->propertyValidation();
 
       $title = $_GET['titulo'];
@@ -44,17 +47,22 @@
 
     // Given a operation, the page will show properties that fulfill the 'operation' ('alquiler'/'venta')
     function showPropertiesOperation($operation){
+      session_start();
       $properties = $this->property_model->getAllPropertiesWhereOperacionEquals($operation);
       $this->property_view->displayProperties($properties);
     }
 
     /* Delete a property, then display the homePage */
     function deleteProperty($id_property){
+      session_start();
+      if(!isset($_SESSION['USERNAME'])){header("Location: " . BASE_URL);}
       $this->property_model->deleteProperty($id_property);
       header("Location: " . BASE_URL);
     }
 
     function showEditProperty($id_property){
+      session_start();
+      if(!isset($_SESSION['USERNAME'])){header("Location: " . BASE_URL);}
       $property_data = $this->property_model->getPropertyById($id_property);
       // If the data is "false"...
       if(empty($property_data)){header("Location: " . BASE_URL);}
@@ -65,6 +73,8 @@
     }
 
     function showAddPropertyPage(){
+      session_start();
+      if(!isset($_SESSION['USERNAME'])){header("Location: " . BASE_URL);}
       $users = $this->user_model->getAllUsers();
       $this->property_view->showAddProperty($users);
     }
@@ -82,6 +92,8 @@
     }
 
     function editProperty(){
+      session_start();
+      if(!isset($_SESSION['USERNAME'])){header("Location: " . BASE_URL);}
       $this->propertyValidation();
 
       $id = $_GET['id'];
@@ -103,6 +115,7 @@
     }
 
     function showProperty($id_property){
+      session_start();
       $exist = $this->property_model->existProperty($id_property);
       // Validation
       if(!$exist){header("Location: " . BASE_URL);}
