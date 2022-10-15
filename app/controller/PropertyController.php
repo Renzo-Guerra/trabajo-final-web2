@@ -26,7 +26,6 @@
       session_start();
       if(!isset($_SESSION['USERNAME'])){header("Location: " . BASE_URL);}
       $this->propertyValidation();
-      var_dump($_GET);
       $title = $_GET['titulo'];
       $type = $_GET['tipo'];
       $operation = $_GET['operacion'];
