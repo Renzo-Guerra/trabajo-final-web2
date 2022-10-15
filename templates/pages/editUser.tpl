@@ -1,3 +1,5 @@
 {include file="../components/header.tpl"}
-{include file="../components/showEditUserForm.tpl"}
+<form action="editarUsuarioDB" class="container-sm">
+  {include file="../components/showUserForm.tpl"}
+</form>
 {include file="../components/footer.tpl"}

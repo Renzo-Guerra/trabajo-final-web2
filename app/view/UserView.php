@@ -14,7 +14,9 @@
     }
     
     function showAddUser(){
-      $this->smarty->assign('form_headign', "Agregar usuario");
+      // As the add and edit user uses the same template, it MUST have the variable $user
+      $this->smarty->assign('user', null);
+      $this->smarty->assign('form_headign', "Nuevo usuario");
       $this->smarty->assign('confirm_button', "Agregar usuario");
       $this->smarty->display('pages/addUser.tpl');
     }
