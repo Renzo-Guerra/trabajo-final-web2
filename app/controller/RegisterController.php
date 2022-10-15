@@ -21,8 +21,10 @@
       $password = $_POST['password'];
       
       $admin = $this->admin_model->getAdminByUsername($username);
+      if(empty($admin)){$this->register_view->showLogIn("El nombre de usuario o la contraseña son incorrectos"); die();}
+      
       $validation = password_verify($password, $admin->contrasenia);
-
+      
       if($validation){
         session_start();
         $_SESSION['USERNAME'] = $admin->nombre_usuario;
