@@ -26,7 +26,7 @@
       session_start();
       if(!isset($_SESSION['USERNAME'])){header("Location: " . BASE_URL);}
       $this->propertyValidation();
-
+      var_dump($_GET);
       $title = $_GET['titulo'];
       $type = $_GET['tipo'];
       $operation = $_GET['operacion'];
@@ -36,6 +36,8 @@
       $rooms = $_GET['ambientes'];
       $bathrooms = $_GET['banios'];
       $allow_pets = $_GET['permite_mascotas'];
+      // Transforming it into a boolean.
+      $allow_pets = ($allow_pets == "true");
       $user_dni = $_GET['propietario'];
 
       // 'Add' data to the DB
@@ -106,6 +108,8 @@
       $rooms = $_GET['ambientes'];
       $bathrooms = $_GET['banios'];
       $allow_pets = $_GET['permite_mascotas'];
+      // Transforming it into a boolean.
+      $allow_pets = ($allow_pets == "true");
       $user_dni = $_GET['propietario'];
       // 'edit' data in the DB
       $this->property_model->editPropertyDB($id, $title, $type, $operation, $description, $price, $square_meters, $rooms, $bathrooms, $allow_pets, $user_dni);
